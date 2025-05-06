@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = [
     'rest_framework_simplejwt',
     'drf_yasg',
     'django_countries',
+    'corsheaders',
 ]
 # Application definition
 
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,6 +83,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'acs.wsgi.application'
+
+CORS_ALLOWED_ORIGINS = 'http://localhost:5173'
 
 
 # Database
