@@ -6,6 +6,7 @@ from utils.managers.custom_user_manager import CustomUserManager
 
 
 class User(AbstractUser):
+    username = None
 
     GENDER_CHOICES = [
         ('male', 'Male'),
