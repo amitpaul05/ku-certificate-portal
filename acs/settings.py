@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 PROJECT_APPS = [
     'user.apps.UserConfig',
     'discipline.apps.DisciplineConfig',
+    'hall.apps.HallConfig',
 ]
 
 THIRD_PARTY_APPS = [
