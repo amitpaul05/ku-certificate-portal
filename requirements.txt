@@ -1,5 +1,5 @@
 asgiref==3.8.1
-Django==5.1.7
+Django==5.0.4
 django-cors-headers==4.7.0
 django-countries==7.6.1
 django-filter==25.1
@@ -15,5 +15,10 @@ PyYAML==6.0.2
 sqlparse==0.5.3
 typing_extensions==4.13.2
 uritemplate==4.1.1
+<<<<<<< Updated upstream
 psycopg2-binary>=2.9
 python-dotenv
+=======
+gunicorn==21.2.0
+
+>>>>>>> Stashed changes

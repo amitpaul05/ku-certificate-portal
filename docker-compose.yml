@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    command: gunicorn acs.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ku_cert_db
+      POSTGRES_USER: ku_cert_user
+      POSTGRES_PASSWORD: ku_cert_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+
