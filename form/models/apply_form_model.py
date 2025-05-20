@@ -45,7 +45,7 @@ class ApplyForm(models.Model):
         verbose_name_plural = "Apply Forms"
 
     def __str__(self):
-        return f"{self.student} - {self.discipline} - {self.degree}"
+        return f"{self.student} - {self.discipline} - {self.degree} - paid: {self.is_paid}"
 
 
 
