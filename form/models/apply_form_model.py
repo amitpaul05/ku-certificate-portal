@@ -17,11 +17,20 @@ class ApplyForm(models.Model):
     hall = models.ForeignKey(Hall, on_delete=models.CASCADE, related_name='apply_forms')
     degree = models.CharField(max_length=10, choices=DEGREE_CHOICES, default='bachelor')
     is_head_approved = models.BooleanField(default=False)
-    head_approved_by = models.ForeignKey(Head, on_delete=models.CASCADE, related_name='apply_forms')
+    head_approved_by = models.ForeignKey(
+        Head, on_delete=models.CASCADE, related_name='apply_forms',
+        null=True, blank=True
+    )
     is_librarian_approved = models.BooleanField(default=False)
-    librarian_approved_by = models.ForeignKey(Librarian, on_delete=models.CASCADE, related_name='apply_forms')
+    librarian_approved_by = models.ForeignKey(
+        Librarian, on_delete=models.CASCADE, related_name='apply_forms',
+        null=True, blank=True
+    )
     is_dsa_approved = models.BooleanField(default=False)
-    dsa_approved_by = models.ForeignKey(Dsa, on_delete=models.CASCADE, related_name='apply_forms')
+    dsa_approved_by = models.ForeignKey(
+        Dsa, on_delete=models.CASCADE, related_name='apply_forms',
+        null=True, blank=True
+    )
     is_controller_approved = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
     total_credit = models.DecimalField(max_digits=10, decimal_places=2)

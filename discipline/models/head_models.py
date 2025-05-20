@@ -11,7 +11,7 @@ class Head(models.Model):
 
 
     def __str__(self):
-        return self.teacher
+        return f"{self.teacher.user.get_full_name()} - {self.discipline.name}"
 
 
 
