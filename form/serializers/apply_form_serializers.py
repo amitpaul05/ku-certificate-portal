@@ -1,6 +1,6 @@
 from rest_framework import serializers
-
-from form.models import ApplyForm
+import uuid
+from form.models import ApplyForm, Payment
 from discipline.serializers.discipline_serializers import DisciplineSerializer
 from user.serializers.student_serializers import StudentSerializer
 from hall.serializers.hall_serializers import HallSerializer
@@ -17,6 +17,25 @@ class ApplyFormSerializer(serializers.ModelSerializer):
             'id', 'is_paid', 'is_controller_approved', 'is_dsa_approved', 'is_librarian_approved',
             'is_head_approved', 'head_approved_by', 'librarian_approved_by', 'dsa_approved_by'
         )
+
+    def create(self, validated_data):
+        student = validated_data['student']
+
+        # Create the ApplyForm
+        apply_form = ApplyForm.objects.create(**validated_data)
+
+        # Create the Payment with dummy transaction_id
+        Payment.objects.create(
+            student=student,
+            transaction_id=f"TX-{uuid.uuid4().hex[:8]}",  # e.g., "demo-a1b2c3d4"
+            form=apply_form
+        )
+
+        # Set is_paid to True
+        apply_form.is_paid = True
+        apply_form.save()
+
+        return apply_form
 
 
 
