@@ -2,7 +2,6 @@ from django.db import models
 
 from hall.models.hall_models import Hall
 from user.models import Teacher
-from django.utils import timezone
 from utils.managers.date_range_manager import DateRangeManager
 from utils.mixins.date_range_mixins import DateRangeStatusMixin
 
