@@ -4,6 +4,7 @@ from hall.models import Hall
 from user.models import Student, Librarian
 from discipline.models import Discipline, Head
 from dsa.models import Dsa
+from hall.models.provost_models import Provost
 
 
 
@@ -31,7 +32,11 @@ class ApplyForm(models.Model):
         Dsa, on_delete=models.CASCADE, related_name='apply_forms',
         null=True, blank=True
     )
-    is_controller_approved = models.BooleanField(default=False)
+    is_provost_approved = models.BooleanField(default=False)
+    provost_approved_by = models.ForeignKey(
+        Provost, on_delete=models.CASCADE, related_name='apply_forms',
+        null=True, blank=True
+    )
     is_paid = models.BooleanField(default=False)
     total_credit = models.DecimalField(max_digits=10, decimal_places=2)
     earned_credit = models.DecimalField(max_digits=10, decimal_places=2)
