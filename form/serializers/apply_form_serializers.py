@@ -44,7 +44,7 @@ class HeadApproveSerializer(serializers.ModelSerializer):
         model = ApplyForm
         fields = '__all__'
         read_only_fields = (
-            'id', 'is_paid', 'is_controller_approved', 'is_dsa_approved', 'is_librarian_approved', 'librarian_approved_by',
+            'id', 'is_paid', 'is_dsa_approved', 'is_librarian_approved', 'librarian_approved_by',
             'dsa_approved_by','is_provost_approved', 'provost_approved_by', 'degree', 'cgpa', 'total_credit', 'earned_credit', 'date_of_last_exam', 'student', 'discipline', 'hall'
         )
 
@@ -55,7 +55,7 @@ class DsaApproveSerializer(serializers.ModelSerializer):
         model = ApplyForm
         fields = '__all__'
         read_only_fields = (
-            'id', 'is_paid', 'is_controller_approved', 'is_head_approved', 'is_librarian_approved', 'librarian_approved_by',
+            'id', 'is_paid','is_head_approved', 'is_librarian_approved', 'librarian_approved_by',
             'is_provost_approved', 'provost_approved_by',
             'head_approved_by', 'degree', 'cgpa', 'total_credit', 'earned_credit', 'date_of_last_exam', 'student', 'discipline', 'hall'
         )
@@ -66,7 +66,7 @@ class LibrarianApproveSerializer(serializers.ModelSerializer):
         model = ApplyForm
         fields = '__all__'
         read_only_fields = (
-            'id', 'is_paid', 'is_controller_approved', 'is_head_approved', 'is_dsa_approved', 'dsa_approved_by',
+            'id', 'is_paid', 'is_head_approved', 'is_dsa_approved', 'dsa_approved_by',
             'head_approved_by', 'is_provost_approved', 'provost_approved_by', 'degree', 'cgpa', 'total_credit', 'earned_credit', 'date_of_last_exam', 'student', 'discipline', 'hall'
         )
 
@@ -76,6 +76,6 @@ class ProvostApproveSerializer(serializers.ModelSerializer):
         model = ApplyForm
         fields = '__all__'
         read_only_fields = (
-            'id', 'is_paid', 'is_controller_approved', 'is_head_approved', 'is_dsa_approved', 'dsa_approved_by',
-            'head_approved_by', 'is_provost_approved', 'provost_approved_by', 'degree', 'cgpa', 'total_credit', 'earned_credit', 'date_of_last_exam', 'student', 'discipline', 'hall'
+            'id', 'is_paid', 'is_head_approved', 'is_dsa_approved', 'dsa_approved_by',
+            'head_approved_by', 'is_librarian_approved', 'librarian_approved_by', 'degree', 'cgpa', 'total_credit', 'earned_credit', 'date_of_last_exam', 'student', 'discipline', 'hall'
         )
