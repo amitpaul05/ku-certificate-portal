@@ -4,7 +4,7 @@ from hall.models import Provost
 from discipline.models import Head
 from dsa.models import Dsa
 from form.models import ApplyForm
-from form.serializers.apply_form_serializers import ApplyFormSerializer, HeadApproveSerializer, LibrarianApproveSerializer, DsaApproveSerializer
+from form.serializers.apply_form_serializers import ApplyFormSerializer, HeadApproveSerializer, LibrarianApproveSerializer, DsaApproveSerializer, ProvostApproveSerializer
 
 
 
@@ -60,5 +60,12 @@ class DsaFormRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 class LibrarianFormRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = ApplyForm.objects.all()
     serializer_class = LibrarianApproveSerializer
+    permission_classes = [IsAuthenticated,]
+    lookup_field = 'id'
+
+
+class ProvostFormRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+    queryset = ApplyForm.objects.all()
+    serializer_class = ProvostApproveSerializer
     permission_classes = [IsAuthenticated,]
     lookup_field = 'id'
