@@ -24,17 +24,23 @@ class ApplyFormListCreateView(ListCreateAPIView):
             # Head
             head_obj = Head.objects.filter(teacher=teacher).first()
             if head_obj:
-                return ApplyForm.objects.filter(student__discipline=head_obj.discipline)
+                return ApplyForm.objects.filter(
+                    student__discipline=head_obj.discipline,
+                    is_head_approved=False,
+                )
 
             # DSA
             dsa_obj = Dsa.objects.filter(teacher=teacher).first()
             if dsa_obj:
-                return ApplyForm.objects.all()
+                return ApplyForm.objects.all(is_dsa_approved=False)
 
             # Provost
             provost_obj = Provost.objects.filter(teacher=teacher).first()
             if provost_obj:
-                return ApplyForm.objects.filter(hall=provost_obj.hall)
+                return ApplyForm.objects.filter(
+                    hall=provost_obj.hall,
+                    is_provost_approved=False
+                )
 
         elif user.user_type == "librarian":
             return ApplyForm.objects.filter(is_librarian_approved=False)
