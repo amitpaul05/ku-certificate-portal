@@ -15,4 +15,4 @@ class Dsa(models.Model):
         verbose_name = "DSA"
 
     def __str__(self):
-        return self.teacher
+        return self.teacher.user.get_full_name()
