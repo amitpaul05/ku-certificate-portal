@@ -14,7 +14,7 @@ class TeacherDetailsSerializer(serializers.ModelSerializer):
         head = instance.heads.first()
         if head:
             data['head_info'] = {
-                id: head.id,
+                "id": head.id,
                 "discipline": head.discipline.name,
                 # Add any other fields you want
             }
