@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from user.serializers.user_serializer import UserSerializer
+from user.serializers.user_serializer import UserSerializer, UserDetailsSerializer
 from user.serializers.update_user_serializers import UpdateUserSerializer, UpdatePasswordSerializer
 from user.serializers.user_serializer import CustomTokenObtainPairSerializer
 User = get_user_model()
@@ -27,7 +27,7 @@ class UserAPIView(GenericAPIView):
 
 
 class UserDetailsAPIView(GenericAPIView):
-    serializer_class = UserSerializer
+    serializer_class = UserDetailsSerializer
     queryset = User.objects.all()
     lookup_field = 'id'
 
