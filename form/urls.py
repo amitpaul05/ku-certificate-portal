@@ -6,6 +6,6 @@ urlpatterns = [
     path("/head/<str:id>", HeadFormRetrieveUpdateDestroyView.as_view(), name='form_update_head'),
     path("/dsa/<str:id>", DsaFormRetrieveUpdateDestroyView.as_view(), name='form_update_dsa'),
     path("/librarian/<str:id>", LibrarianFormRetrieveUpdateDestroyView.as_view(), name='form_update_librarian'),
-    path("/provost/<str:id>", LibrarianFormRetrieveUpdateDestroyView.as_view(), name='form_update_librarian'),
+    path("/provost/<str:id>", ProvostFormRetrieveUpdateDestroyView.as_view(), name='form_update_librarian'),
     # path("/<str:id>", HallDetailAPIView.as_view(), name='hall_details'),
 ]
