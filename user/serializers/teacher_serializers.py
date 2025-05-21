@@ -10,35 +10,33 @@ class TeacherDetailsSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
 
-        # Check Head role
-        head = instance.heads.order_by('-start_date').first()
+        # Check for Head role
+        head = instance.heads.first()
         if head:
             data['head_info'] = {
-                "discipline": head.discipline.id,
-                "start_date": head.start_date,
-                "end_date": head.end_date,
+                id: head.id,
+                "discipline": head.discipline.name,
+                # Add any other fields you want
             }
             return data
 
-        # Check DSA role
-        dsa = getattr(instance, 'dsa', None)
+        # Check for DSA role
+        dsa = instance.dsa.first()
         if dsa:
             data['dsa_info'] = {
-                "start_date": dsa.start_date,
-                "end_date": dsa.end_date,
+                "id": dsa.id
             }
             return data
 
-        # Check Provost role
-        provost = getattr(instance, 'provost', None)
+        # Check for Provost role
+        provost = instance.provosts.first()
         if provost:
             data['provost_info'] = {
-                "start_date": provost.start_date,
-                "end_date": provost.end_date,
-                "hall": provost.hall.id,
+                "id": provost.id
             }
             return data
 
+        # No role found
         return data
 
 class TeacherSerializer(serializers.ModelSerializer):
